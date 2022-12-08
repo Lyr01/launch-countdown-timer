@@ -1,7 +1,259 @@
+@import url("https://fonts.googleapis.com/css2?family=Red+Hat+Text:wght@700&display=swap");
+
+:root {
+	--Grayish-blue: hsl(237, 18%, 59%);
+	--Soft-red: hsl(345, 95%, 68%);
+	--White: hsl(0, 0%, 100%);
+	--Dark-desaturated-blue: hsl(236, 21%, 26%);
+	--Very-dark-blue: hsl(235, 16%, 14%);
+	--black: hsl(234, 17%, 12%);
+}
+
+/*
+  1. Use a more-intuitive box-sizing model.
+*/
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+/*
+    2. Remove default margin
+  */
+* {
+	margin: 0;
+}
+/*
+    3. Allow percentage-based heights in the application
+  */
+html,
+body {
+	min-height: 100vh;
+	position: relative;
+}
+/*
+    Typographic tweaks!
+    4. Add accessible line-height
+    5. Improve text rendering
+  */
+body {
+	line-height: 1.5;
+	-webkit-font-smoothing: antialiased;
+}
+/*
+    6. Improve media defaults
+  */
+img,
+picture,
+video,
+canvas,
+svg {
+	display: block;
+	max-width: 100%;
+}
+/*
+    7. Remove built-in form typography styles
+  */
+input,
+button,
+textarea,
+select {
+	font: inherit;
+}
+/*
+    8. Avoid text overflows
+  */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	overflow-wrap: break-word;
+}
+
+#root,
+.App {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	font-family: "Red Hat Text", sans-serif;
+}
+
+.App {
+	background-color: var(--Very-dark-blue);
+	background-image: url("./images/bg-stars.svg");
+}
+
+.timer-wrapper {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-image: url("./images/pattern-hills.svg");
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: bottom;
+}
+
+.title {
+	padding-top: 8.8125rem;
+	font-size: 16px;
+	letter-spacing: 10px;
+	text-transform: uppercase;
+	color: var(--White);
+}
+
+.timer {
+	display: grid;
+	gap: 2rem;
+	grid-template-areas:
+		"days hours minutes seconds"
+		"d-txt h-txt m-txt s-txt";
+	padding-top: 6.9375rem;
+}
+
+.timer-days,
+.timer-hours,
+.timer-minutes,
+.timer-seconds {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 9.25rem;
+	height: 8.75rem;
+	font-size: 58px;
+	text-align: center;
+	color: var(--Soft-red);
+	background-color: var(--Dark-desaturated-blue);
+	border-radius: 10px;
+}
+
+.timer-days {
+	grid-area: days;
+}
+.timer-days-text {
+	grid-area: d-txt;
+}
+
+.timer-hours {
+	grid-area: hours;
+}
+.timer-hours-text {
+	grid-area: h-txt;
+}
+
+.timer-minutes {
+	grid-area: minutes;
+}
+.timer-minutes-text {
+	grid-area: m-txt;
+}
+
+.timer-seconds {
+	grid-area: seconds;
+}
+.timer-seconds-text {
+	grid-area: s-txt;
+}
+
+p {
+	font-size: 10px;
+	letter-spacing: 7px;
+	text-align: center;
+	text-transform: uppercase;
+	color: var(--Grayish-blue);
+}
+
+.timer div + div {
+	margin-left: 2rem;
+}
+
+.hills {
+	height: 100vh;
+}
+
+.social {
+	position: absolute;
+	display: flex;
+	top: 90%;
+	gap: 2rem;
+}
+
+img:hover {
+	background-color: var(--Soft-red);
+}
+
 .attribution {
 	font-size: 11px;
 	text-align: center;
 }
 .attribution a {
 	color: hsl(228, 45%, 44%);
+}
+
+@media only screen and (max-width: 700px) {
+	.title {
+		font-size: 20px;
+		letter-spacing: 8px;
+		text-align: center;
+		margin: 0 3.375rem;
+	}
+
+	.timer {
+		gap: 1rem;
+	}
+
+	.timer-days,
+	.timer-hours,
+	.timer-minutes,
+	.timer-seconds {
+		width: 6rem;
+		height: 6rem;
+		font-size: 40px;
+	}
+
+	p {
+		font-size: 10px;
+		letter-spacing: 4px;
+	}
+}
+
+@media only screen and (max-width: 450px) {
+	.title {
+		font-size: 13px;
+		letter-spacing: 8px;
+		text-align: center;
+		margin: 0 3.375rem;
+	}
+
+	.timer {
+		gap: 1rem;
+	}
+
+	.timer-days,
+	.timer-hours,
+	.timer-minutes,
+	.timer-seconds {
+		width: 4.375rem;
+		height: 4rem;
+		font-size: 29px;
+	}
+
+	p {
+		font-size: 7px;
+		letter-spacing: 4px;
+	}
+}
+
+@media only screen and (max-width: 333px) {
+	.timer {
+		grid-template-areas:
+			"days hours"
+			"d-txt h-txt"
+			"minutes seconds"
+			"m-txt s-txt";
+		padding-top: 6.9375rem;
+	}
 }
